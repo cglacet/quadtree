@@ -75,6 +75,7 @@ cdef double BoundaryXY_getY(long& p):
     assert ("get_y" in dir(o))
     return <double> o.get_y()
 
+@cython.auto_pickle(True)
 cdef class Quadtree(object):
     """ Main class for quadtrees
     You must provide x-y coordinates for a center, x-y dimensions for width
