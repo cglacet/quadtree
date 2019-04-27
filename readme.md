@@ -15,12 +15,7 @@ Recommended installation procedure :
 ```
 - installation:
 ```
-pip install smartquadtree
-```
-
-If no version is available, you can compile your own:
-```
-pip install git+git://github.com/xoolive/quadtree
+pip install git+git://github.com/cglacet/quadtree
 ```
 
 ### Usage
