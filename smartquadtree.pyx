@@ -18,6 +18,7 @@ from libcpp cimport bool as cppbool
 from libcpp.vector cimport vector
 from cpython.ref cimport Py_INCREF, Py_DECREF
 from cython.operator cimport dereference as deref, preincrement as inc
+import cython
 
 
 cdef extern from *:
@@ -75,7 +76,7 @@ cdef double BoundaryXY_getY(long& p):
     assert ("get_y" in dir(o))
     return <double> o.get_y()
 
-@cython.auto_pickle(True)
+#@cython.auto_pickle(True)
 cdef class Quadtree(object):
     """ Main class for quadtrees
     You must provide x-y coordinates for a center, x-y dimensions for width
@@ -97,6 +98,9 @@ cdef class Quadtree(object):
             print self.__doc__
             raise SyntaxError
         self.q = new SmartQuadtree[long](x0, y0, dim_x, dim_y, depth)
+
+    # def __reduce__(self):
+    #     return (rebuild, (self.q, self.elements()))
 
     def __dealloc__(self):
         if self.q != NULL:
